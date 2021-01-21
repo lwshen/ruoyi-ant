@@ -5,10 +5,13 @@ import moment from 'moment'
 
 // default lang
 import enUS from './lang/en-US'
+// import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
+// import zhCN from './lang/zh_CN'
 
 Vue.use(VueI18n)
 
 export const defaultLang = 'en-US'
+// export const defaultLang = 'zh_CN'
 
 const messages = {
   'en-US': {

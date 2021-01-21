@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { UserLayout, BlankLayout } from '@/layouts'
+import { UserLayout, BlankLayout, RouteView } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
 /**
  * 这里不再保留原来默认的菜单asyncRouterMap
@@ -242,5 +242,24 @@ export const constantRouterMap = [
     path: '/404',
     component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
   }
+  // {
+  //   component: RouteView,
+  //   path: '/dashboard',
+  //   redirect: '/dashboard/weclome',
+  //   icon: bxAnaalyse,
+  //   children: [
+  //     {
+  //       path: 'weclome',
+  //       name: 'welcome',
+  //       component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/Welcome')
+  //     },
+  //     {
+  //       title: 'menu.dashboard.workplace',
+  //       path: 'workplace',
+  //       key: 'workplace',
+  //       icon: ''
+  //     }
+  //   ]
+  // }
 
 ]

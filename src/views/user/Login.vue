@@ -47,7 +47,7 @@
             </a-input-password>
           </a-form-item>
         </a-tab-pane>
-        <a-tab-pane key="tab2" tab="手机号登录">
+        <!-- <a-tab-pane key="tab2" tab="手机号登录">
           <a-form-item>
             <a-input
               size="large"
@@ -82,17 +82,17 @@
               ></a-button>
             </a-col>
           </a-row>
-        </a-tab-pane>
+        </a-tab-pane> -->
       </a-tabs>
 
-      <a-form-item>
+      <!-- <a-form-item>
         <a-checkbox v-decorator="['rememberMe', { valuePropName: 'checked' }]">自动登录</a-checkbox>
         <router-link
           :to="{ name: 'recover', params: { user: 'aaa'} }"
           class="forge-password"
           style="float: right;"
         >忘记密码</router-link>
-      </a-form-item>
+      </a-form-item> -->
 
       <a-form-item style="margin-top:24px">
         <a-button
@@ -106,7 +106,7 @@
       </a-form-item>
 
       <div class="user-login-other">
-        <span>其他登录方式</span>
+        <!-- <span>其他登录方式</span>
         <a>
           <a-icon class="item-icon" type="alipay-circle"></a-icon>
         </a>
@@ -115,7 +115,7 @@
         </a>
         <a>
           <a-icon class="item-icon" type="weibo-circle"></a-icon>
-        </a>
+        </a> -->
         <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>
       </div>
     </a-form>
@@ -133,6 +133,7 @@
       :imgSize="{ width: '330px', height: '155px' }"
       ref="verify"
     ></Verify>
+    <!-- captchaType参数: 1）滑动拼图 blockPuzzle 2）文字点选 clickWord -->
   </div>
 </template>
 

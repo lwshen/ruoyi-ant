@@ -3,12 +3,12 @@
     <template v-slot:content>
       <div class="page-header-content">
         <div class="avatar">
-          <a-avatar size="large" :src="currentUser.avatar" />
+          <a-avatar size="large" :src="user.avatar" />
         </div>
         <div class="content">
           <div class="content-title">
-            {{ timeFix }}，{{ user.name }}
-            <span class="welcome-text">，{{ welcome }}</span>
+            {{ timeFix }}，{{ user.userName }} 。
+            <!-- <span class="welcome-text">，{{ welcome }}</span> -->
           </div>
           <div>前端工程师 | 蚂蚁金服 - 某某某事业群 - VUE平台</div>
         </div>
@@ -109,7 +109,7 @@
               <a-button type="primary" style="margin: 12px 26px">朕要瞧瞧</a-button>
             </a>
           </a-card>
-          <a-card
+          <!-- <a-card
             title="作者录制的启动演示视频"
             style="margin-bottom: 24px"
             :bordered="false"
@@ -126,8 +126,8 @@
                 style="width:100%;height:400px;"
               ></iframe>
             </div>
-          </a-card>
-          <a-card
+          </a-card> -->
+          <!-- <a-card
             title="捐赠"
             style="margin-bottom: 24px"
             :bordered="false"
@@ -135,7 +135,7 @@
           >
             <h3 style="margin: 12px 26px">请作者喝杯咖啡或者建设演示服务器</h3>
             <img style="width:100%" src="http://doc.rycloud.zmrit.com/images/donate.png" />
-          </a-card>
+          </a-card> -->
           <!-- <a-card title="更新日志" style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 0}">
             <a-collapse defaultActiveKey="0" accordion :bordered="false">
               <a-collapse-panel :header="item.title" :key="index" v-for="(item, index) in changeList">
@@ -312,12 +312,14 @@ export default {
     this.avatar = this.userInfo.avatar
 
     getRoleList().then(res => {
-      // console.log('workplace -> call getRoleList()', res)
+      console.log('workplace -> call getRoleList()', res)
     })
 
     getServiceList().then(res => {
-      // console.log('workplace -> call getServiceList()', res)
+      console.log('workplace -> call getServiceList()', res)
     })
+
+    console.log(this.user)
   },
   mounted () {
     this.getTeams()

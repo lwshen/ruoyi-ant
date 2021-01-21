@@ -106,7 +106,7 @@ export const generatorDynamicRouter = () => {
     getRouterByUser().then(res => {
       const rootMenu = getRootMenu(res)
       const routers = generator(rootMenu)
-      // console.log('routers', routers)
+      console.log('routers', routers)
       routers.push(notFoundRouter)
       resolve(routers)
     }).catch(err => {

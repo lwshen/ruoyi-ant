@@ -265,6 +265,11 @@ export function delDist (parameter) {
 }
 // config 配置
 export function getConfigList (parameter) {
+  console.log(axios({
+    url: api.config + '/list',
+    method: 'get',
+    params: parameter
+  }))
   return axios({
     url: api.config + '/list',
     method: 'get',

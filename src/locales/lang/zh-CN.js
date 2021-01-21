@@ -1,7 +1,8 @@
-import { locales } from 'ant-design-vue'
-const zhCN = locales.zh_CN
+// import { locales } from 'ant-design-vue'
+// const zhCN = locales.zh_CN
+import antdZhCN from 'ant-design-vue/es/locale-provider/zh_CN'
 const components = {
-  antLocale: zhCN,
+  antLocale: antdZhCN,
   momentName: 'zh-cn'
 }
 

@@ -17,47 +17,68 @@ function getGitHash () {
   return 'unknown'
 }
 
+// const assetsCDN = {
+//   // main.js里引入了对应的less以使 webpack-theme-color-replacer工作
+//   // https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.9/dist/antd.min.css
+//   css: [],
+//   js: [
+//     'https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js',
+//     'https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js',
+//     'https://cdn.jsdelivr.net/npm/vue-router@3.1.2/dist/vue-router.min.js',
+//     'https://cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js',
+//     'https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js',
+//     'https://cdn.jsdelivr.net/npm/moment@2.24.0/locale/zh-cn.js',
+//     'https://cdn.jsdelivr.net/npm/@antv/g2@3.5.7/dist/g2.min.js',
+//     'https://cdn.jsdelivr.net/npm/@antv/data-set@0.10.2/dist/data-set.min.js',
+//     'https://cdn.jsdelivr.net/npm/ant-design-vue@1.6.0/dist/antd-with-locales.js'
+//   ]
+// }
 const assetsCDN = {
-  // main.js里引入了对应的less以使 webpack-theme-color-replacer工作
-  // https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.9/dist/antd.min.css
-  css: [],
-  js: [
-    'https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js',
-    'https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js',
-    'https://cdn.jsdelivr.net/npm/vue-router@3.1.2/dist/vue-router.min.js',
-    'https://cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js',
-    'https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js',
-    'https://cdn.jsdelivr.net/npm/moment@2.24.0/locale/zh-cn.js',
-    'https://cdn.jsdelivr.net/npm/@antv/g2@3.5.7/dist/g2.min.js',
-    'https://cdn.jsdelivr.net/npm/@antv/data-set@0.10.2/dist/data-set.min.js',
-    'https://cdn.jsdelivr.net/npm/ant-design-vue@1.6.0/dist/antd-with-locales.js'
-  ]
-}
+  //1.清空这里的配置
+    css: [],
+    js: []
+  }
 // webpack build externals
+// const prodExternals = {
+//   // key表示包名(import foo from 'xx' 里的xx)
+//   // value表示window下的全局变量名(库暴露出来的namespace,可查lib对应的webpack配置里的library字段)
+//   'vue': 'Vue',
+//   'axios': 'axios',
+//   'vue-router': 'VueRouter',
+//   'vuex': 'Vuex',
+//   'moment': 'moment',
+//   '@antv/g2': 'G2',
+//   '@antv/data-set': 'DataSet',
+//   'ant-design-vue': 'antd'
+// }
 const prodExternals = {
-  // key表示包名(import foo from 'xx' 里的xx)
-  // value表示window下的全局变量名(库暴露出来的namespace,可查lib对应的webpack配置里的library字段)
-  'vue': 'Vue',
-  'axios': 'axios',
-  'vue-router': 'VueRouter',
-  'vuex': 'Vuex',
-  'moment': 'moment',
-  '@antv/g2': 'G2',
-  '@antv/data-set': 'DataSet',
-  'ant-design-vue': 'antd'
-}
+  //2.这里也清空
+  }
 
 // vue.config.js
+// const vueConfig = {
+//   configureWebpack: {
+//     externals: prodExternals,
+//     plugins: [
+//       // Ignore all locale files of moment.js
+//       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+//       new webpack.IgnorePlugin(/moment\//),
+//       new webpack.DefinePlugin({
+//         APP_VERSION: `"${require('./package.json').version}"`,
+//         GIT_HASH: JSON.stringify(getGitHash()),
+//         BUILD_DATE: buildDate
+//       })
+//     ]
+//   },
 const vueConfig = {
   configureWebpack: {
     externals: prodExternals,
     plugins: [
       // Ignore all locale files of moment.js
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-      new webpack.IgnorePlugin(/moment\//),
+      //3.删除关于moment的2行配置
       new webpack.DefinePlugin({
         APP_VERSION: `"${require('./package.json').version}"`,
-        GIT_HASH: JSON.stringify(getGitHash()),
+        GIT_HASH: JSON.stringify(GitRevision.version()),
         BUILD_DATE: buildDate
       })
     ]
@@ -105,10 +126,11 @@ const vueConfig = {
 
   devServer: {
     // development server port 8000
-    port: 8000,
+    port: 7000,
     proxy: {
       '/api': {
-        target: 'http://gateway.com:9527',
+        // target: 'http://gateway.com:9527',
+        target: 'http://127.0.0.1:9527',
         pathRewrite: { '^/api': '' },
         ws: false,
         changeOrigin: true
