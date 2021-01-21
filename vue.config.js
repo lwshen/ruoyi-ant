@@ -10,12 +10,12 @@ function resolve (dir) {
 }
 
 // check Git
-function getGitHash () {
-  try {
-    return GitRevision.version()
-  } catch (e) {}
-  return 'unknown'
-}
+// function getGitHash () {
+//   try {
+//     return GitRevision.version()
+//   } catch (e) {}
+//   return 'unknown'
+// }
 
 // const assetsCDN = {
 //   // main.js里引入了对应的less以使 webpack-theme-color-replacer工作
@@ -34,10 +34,10 @@ function getGitHash () {
 //   ]
 // }
 const assetsCDN = {
-  //1.清空这里的配置
-    css: [],
-    js: []
-  }
+  // 1.清空这里的配置
+  css: [],
+  js: []
+}
 // webpack build externals
 // const prodExternals = {
 //   // key表示包名(import foo from 'xx' 里的xx)
@@ -52,8 +52,8 @@ const assetsCDN = {
 //   'ant-design-vue': 'antd'
 // }
 const prodExternals = {
-  //2.这里也清空
-  }
+  // 2.这里也清空
+}
 
 // vue.config.js
 // const vueConfig = {
@@ -75,7 +75,7 @@ const vueConfig = {
     externals: prodExternals,
     plugins: [
       // Ignore all locale files of moment.js
-      //3.删除关于moment的2行配置
+      // 3.删除关于moment的2行配置
       new webpack.DefinePlugin({
         APP_VERSION: `"${require('./package.json').version}"`,
         GIT_HASH: JSON.stringify(GitRevision.version()),
